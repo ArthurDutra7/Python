@@ -1,7 +1,17 @@
-vet = []
+mat = [
+    [1, 2, 3], 
+    [4, 5, 6], 
+    [7, 8, 9]
+]
+print("Elemnetos da 1 linha: ")
+for elem in mat[0]:
+    print(elem,end=" ")
 
-for i in range(5):
-    num = int(input(f"Digite o {i+1}º número: "))
-    vet.append(num)
+print()
 
-print(f"Esses foram os números digitados:",vet)
+print("Todos os Elementos da matriz")
+for linha in mat:
+    for elem in linha:
+        print(elem,end=" ")
+    print()
+    

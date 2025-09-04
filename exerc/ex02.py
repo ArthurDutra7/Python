@@ -1,22 +1,36 @@
-vet = []
+matriz = []
 
-for i in vet:
-    num = int(input(f"Digite o {i+1}º número: "))
-    vet.append(num)
+for i in range(3):
+    linha = []
+    for j in range(4):
+        num = int(input(f"DIgite o número da posição [{i},{j}]: "))
+        linha.append(num)
+    matriz.append(linha)
 
-print(f"Esses foram os números digitados:",vet)
+print("\nMatriz digitada:")
+for linha in matriz:
+    print(linha)
 
-maior = vet[0]
-menor = vet[0]
+maior = matriz[0][0]
+menor = matriz[0][0]
 
-for num in vet:
-    if num > maior:
-        maior = num
-    if num < menor:
-        menor = num
+for i in range(3):
+    for j in range(4):
+        if matriz[i][j] > maior:
+            maior = matriz [i][j]
+        if matriz[i][j] > menor:
+            menor = matriz [i][j]
 
-print(f"O maior número foi: ",maior)
-print(f"O menor número foi: ",menor)
+posimaior = []
+posimenor = []
 
-media = (maior+menor)/2
-print(f"Essa foi a média entre {maior} e {menor}: ",media)
+for i in range(3):
+    for j in range(4):
+        if matriz[i][j] == maior:
+            posimaior.append((i,j))
+        if matriz[i][j] == menor:
+            posimenor.append((i,j))
+
+
+print(f"\nMaior número na Matriz é: {maior} na posição {posimaior}")
+print(f"\nMenor número na Matriz é: {menor} na posição {posimenor}")
