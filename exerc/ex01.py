@@ -1,17 +1,29 @@
-mat = [
-    [1, 2, 3], 
-    [4, 5, 6], 
-    [7, 8, 9]
-]
-print("Elemnetos da 1 linha: ")
-for elem in mat[0]:
-    print(elem,end=" ")
+pilha = [None] * 10
+topo = -1
 
-print()
+while True:
+    if topo < 9:
+        valor = int(input("Digite um número para empilhar (ou -1 para parar): "))
+        if valor == -1: 
+            break
+        topo += 1
+        pilha[topo] = valor
+        print("Empilhado:", valor)
+    else:
+        print("Pilha cheia")
+        break
 
-print("Todos os Elementos da matriz")
-for linha in mat:
-    for elem in linha:
-        print(elem,end=" ")
-    print()
-    
+resposta = input("Remover elemento da pilha? (sim/nao): ").strip().lower()
+if resposta == "sim":
+    if topo >= 0:
+        valor_removido = pilha[topo]
+        pilha[topo] = None
+        topo -= 1
+        print("Removido:", valor_removido)
+    else:
+        print("Pilha vazia")
+
+if topo >= 0:
+    print("Topo =", pilha[topo])
+else:
+    print("Pilha vazia")
