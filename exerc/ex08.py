@@ -1,6 +1,19 @@
-vetor = [7, 8, 3, 2, 4]
-soma = 0
-for i in range(len(vetor)):
-    for j in range(i, len(vetor[i])):
-        soma += vetor[j]
-print(soma)
+vetor = []
+maior = None
+menor = None
+
+for i in range(6):
+    num = int(input(f"Digite o {i+1}º número: "))
+    vetor.append(num)
+
+for i in vetor:
+    if vetor>maior:
+        maior = vetor
+        print(f"Novo maior: {maior}")
+        posicao = vetor.index(i)
+    if vetor<menor:
+        menor = vetor
+        print(f"Novo menor: {menor}")
+        posicao2 = vetor.index(i)
+
+
