@@ -1,19 +1,10 @@
-vetor = []
-maior = None
-menor = None
-
-for i in range(6):
-    num = int(input(f"Digite o {i+1}º número: "))
-    vetor.append(num)
-
-for i in vetor:
-    if vetor>maior:
-        maior = vetor
-        print(f"Novo maior: {maior}")
-        posicao = vetor.index(i)
-    if vetor<menor:
-        menor = vetor
-        print(f"Novo menor: {menor}")
-        posicao2 = vetor.index(i)
-
-
+matriz = []
+for i in range(4):
+  linha = []
+  for j in range(4):
+    valor = int(input(f"Digite o valor da posição [{i}][{j}]: "))
+    linha.append(valor)
+    matriz.append(linha)
+print("Diagonal principal:")
+for i in range(4):
+  print(matriz[i][i])
