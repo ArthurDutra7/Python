@@ -5,7 +5,7 @@ pilha_refazer = []    # Guarda o que foi desfeito
 while True:
     print("EDITOR DE TEXTO\n")
 
-    novo_texto = input("Edite o texto atual (ou pressione ENTER para manter): ")
+    novo_texto = str(input("Edite o texto atual (ou pressione ENTER para manter): "))
     print("Texto atual:",novo_texto)
 
     print("\n1 - Editar texto")
@@ -22,17 +22,10 @@ while True:
     if opcao == 1:
         print("\nTexto atual:")
         print(texto if texto else "(vazio)")
-        print("------------------------------")
-        edicao = input("Digite a alteração que deseja fazer (adição, correção, etc.): ")
-
-        # Salva o estado anterior antes de alterar
-        pilha_desfazer.append(texto)
-
-        # Atualiza o texto (concatena a edição)
-        texto += edicao
-
-        # Limpa o refazer porque é uma nova alteração
-        pilha_refazer.clear()
+        edicao = str(input("Edite o texto: "))
+        pilha_desfazer.append(texto)  # Salva o estado anterior antes de alterar
+        texto += edicao  # Atualiza o texto (concatena a edição)
+        pilha_refazer.clear() # Limpa o refazer porque é uma nova alteração
 
         print("\nAlteração feita com sucesso.")
         print("Texto anterior:", pilha_desfazer[-1] if pilha_desfazer else "(nenhum)")
@@ -40,7 +33,7 @@ while True:
 
     elif opcao == 2:
         if pilha_desfazer:
-            print("\nDesfazendo última alteração...")
+            print("\nDesfazendo última alteração.")
             pilha_refazer.append(texto)
             texto = pilha_desfazer.pop()
             print("Texto restaurado para:", texto if texto else "(vazio)")
@@ -49,7 +42,7 @@ while True:
 
     elif opcao == 3:
         if pilha_refazer:
-            print("\nRefazendo alteração desfeita...")
+            print("\nRefazendo alteração desfeita.")
             pilha_desfazer.append(texto)
             texto = pilha_refazer.pop()
             print("Texto restaurado para:", texto)
@@ -61,4 +54,4 @@ while True:
         break
 
     else:
-        print("\nOpção inválida. Tente novamente.")
+        print("\nOpção inválida, tente novamente.")
