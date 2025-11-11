@@ -1,9 +1,7 @@
-print("=== Exercício 1 – Montar Árvore Binária de Busca ===")
 print("Digite números inteiros (digite -1 para encerrar):")
-
 raiz = None
 
-# Montagem da Árvore Binária de Busca (ABB)
+# Montagem da Árvore 
 while True:
     num = int(input("Número: "))
     if num == -1:
@@ -21,7 +19,7 @@ while True:
                         atual["esq"] = {"valor": num, "esq": None, "dir": None}
                         break
                     else:
-                        print("⚠️ Nível máximo (4) atingido! Número não inserido:", num)
+                        print("Nível máximo atingido! Número não inserido:", num)
                         break
                 else:
                     atual = atual["esq"]
@@ -33,7 +31,7 @@ while True:
                         atual["dir"] = {"valor": num, "esq": None, "dir": None}
                         break
                     else:
-                        print("⚠️ Nível máximo (4) atingido! Número não inserido:", num)
+                        print("Nível máximo atingido! Número não inserido:", num)
                         break
                 else:
                     atual = atual["dir"]
@@ -46,17 +44,14 @@ while True:
 print("\nÁrvore montada (estrutura de dicionários):")
 print(raiz)
 
-# ====================================================================
-print("\n=== Exercício 2 – Percursos da Árvore ===")
+print("\nPercursos da Árvore")
 
 # Pré-Ordem: raiz → esquerda → direita
 print("Pré-Ordem:", end=" ")
-
 pilha = []
 atual = raiz
 anterior = None
 
-# percurso manual (limitado a 4 níveis)
 if raiz is not None:
     # nível 1
     print(raiz["valor"], end=" ")
@@ -100,14 +95,14 @@ if raiz is not None:
             # nível 4 (direita da direita da direita)
             if raiz["dir"]["dir"]["dir"] is not None:
                 print(raiz["dir"]["dir"]["dir"]["valor"], end=" ")
-
 print()
+
 
 # In-Ordem: esquerda → raiz → direita
 print("In-Ordem:", end=" ")
 
 if raiz is not None:
-    # esquerda profunda
+    # esquerda 
     if raiz["esq"] is not None and raiz["esq"]["esq"] is not None:
         print(raiz["esq"]["esq"]["valor"], end=" ")
 
@@ -118,7 +113,7 @@ if raiz is not None:
             print(raiz["esq"]["dir"]["valor"], end=" ")
 
     print(raiz["valor"], end=" ")
-
+    # direita
     if raiz["dir"] is not None:
         if raiz["dir"]["esq"] is not None:
             print(raiz["dir"]["esq"]["valor"], end=" ")
@@ -129,8 +124,8 @@ if raiz is not None:
             if raiz["dir"]["dir"]["esq"] is not None:
                 print(raiz["dir"]["dir"]["esq"]["valor"], end=" ")
             print(raiz["dir"]["dir"]["valor"], end=" ")
-
 print()
+
 
 # Pós-Ordem: esquerda → direita → raiz
 print("Pós-Ordem:", end=" ")
@@ -154,11 +149,10 @@ if raiz is not None:
             print(raiz["dir"]["dir"]["valor"], end=" ")
         print(raiz["dir"]["valor"], end=" ")
 
-    print(raiz["valor"])
+print(raiz["valor"])
 
-# ====================================================================
-print("\n=== Exercício 3 – Buscar um valor na Árvore ===")
 
+print("\nBuscar um valor na Árvore")
 if raiz is not None:
     busca = int(input("Digite um número para buscar: "))
 
