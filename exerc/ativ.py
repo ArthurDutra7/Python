@@ -1,6 +1,10 @@
+# Início do programa
 arvore = None
 
-# Entrada de dados
+# -- Se quiser valores fixos, descomente a linha abaixo e comente as linhas de input --
+# valores = [30, 20, 40, 10, 25, 35, 50]
+
+# Entrada de dados (se quiser input do usuário, deixe estas linhas ativas)
 entrada = input("Digite os valores da árvore separados por espaço: ")
 valores = entrada.split()
 
@@ -28,7 +32,7 @@ for v in valores:
 
 # Cálculo da altura e fator de balanceamento
 pilha = [[arvore, False]]  # nó e flag de visita
-alturas = {}
+alturas = {}               # usamos id(no) -> altura
 balanceada = True
 
 while len(pilha) > 0:
@@ -40,15 +44,18 @@ while len(pilha) > 0:
         pilha.pop()
     elif visitado == False:
         topo[1] = True
+        # empilha direita e depois esquerda (para processar esquerda primeiro)
         pilha.append([no[1], False])  # direita
         pilha.append([no[0], False])  # esquerda
     else:
+        # Calcula alturas dos filhos usando id() como chave
         h_esq = 0
         h_dir = 0
-        if no[0] in alturas:
-            h_esq = alturas[no[0]]
-        if no[1] in alturas:
-            h_dir = alturas[no[1]]
+
+        if no[0] is not None and id(no[0]) in alturas:
+            h_esq = alturas[id(no[0])]
+        if no[1] is not None and id(no[1]) in alturas:
+            h_dir = alturas[id(no[1])]
 
         fb = h_esq - h_dir
         print("Nó", no[2], "-> FB =", fb)
@@ -56,7 +63,7 @@ while len(pilha) > 0:
         if fb < -1 or fb > 1:
             balanceada = False
 
-        alturas[no] = max(h_esq, h_dir) + 1
+        alturas[id(no)] = max(h_esq, h_dir) + 1
         pilha.pop()
 
 if balanceada:
