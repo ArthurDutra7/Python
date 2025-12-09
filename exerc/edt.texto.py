@@ -7,6 +7,7 @@ while True:
 
     novo_texto = str(input("Edite o texto atual (ou pressione ENTER para manter): "))
     print("Texto atual:",novo_texto)
+    print(texto)
 
     print("\n1 - Editar texto")
     print("2 - Desfazer última alteração")
