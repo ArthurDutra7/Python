@@ -1,3 +1,6 @@
+# 4. Pilhas – Sistema de Desfazer/Refazer; 
+# EDIÇÃO DE TEXTO
+
 texto = ""            # Texto atual
 pilha_desfazer = []   # Guarda o histórico anterior
 pilha_refazer = []    # Guarda o que foi desfeito
@@ -5,9 +8,9 @@ pilha_refazer = []    # Guarda o que foi desfeito
 while True:
     print("EDITOR DE TEXTO\n")
 
-    novo_texto = str(input("Edite o texto atual (ou pressione ENTER para manter): "))
-    print("Texto atual:",novo_texto)
-    print(texto)
+    novo_texto = input("Escreva seu texto(ou aperte ENTER para manter): ")
+    print("Texto escrito agora: ",novo_texto)
+    print("Texto armazenado: ",texto)
 
     print("\n1 - Editar texto")
     print("2 - Desfazer última alteração")
@@ -16,32 +19,30 @@ while True:
     opcao = int(input("Escolha: "))
 
     if novo_texto != "":
-        pilha_desfazer.append(texto)   # guarda o texto anterior
-        texto = novo_texto             # atualiza o texto
-        pilha_refazer.clear()          # limpa o refazer, pois há nova edição
+        texto = novo_texto  
 
-    if opcao == 1:
+    if opcao == 1:      #Edição do Texto
         print("\nTexto atual:")
         print(texto if texto else "(vazio)")
         edicao = str(input("Edite o texto: "))
-        pilha_desfazer.append(texto)  # Salva o estado anterior antes de alterar
-        texto += edicao  # Atualiza o texto (concatena a edição)
-        pilha_refazer.clear() # Limpa o refazer porque é uma nova alteração
+        pilha_desfazer.append(texto) 
+        texto += edicao  
+        pilha_refazer.clear() 
 
         print("\nAlteração feita com sucesso.")
-        print("Texto anterior:", pilha_desfazer[-1] if pilha_desfazer else "(nenhum)")
+        print("Texto anterior:", pilha_desfazer[-1])
         print("Texto novo:", texto)
 
-    elif opcao == 2:
+    elif opcao == 2:        # Desfazer ultima alteração
         if pilha_desfazer:
             print("\nDesfazendo última alteração.")
             pilha_refazer.append(texto)
             texto = pilha_desfazer.pop()
-            print("Texto restaurado para:", texto if texto else "(vazio)")
+            print("Texto restaurado para:", texto)
         else:
             print("\nNada para desfazer.")
 
-    elif opcao == 3:
+    elif opcao == 3:        # Refazer a alteração desfeita
         if pilha_refazer:
             print("\nRefazendo alteração desfeita.")
             pilha_desfazer.append(texto)
@@ -50,7 +51,7 @@ while True:
         else:
             print("\nNada para refazer.")
 
-    elif opcao == 4:
+    elif opcao == 4:        # Sair
         print("\nEncerrando o programa.")
         break
 
